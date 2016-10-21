@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home
+Route::get('/', 'HomeController@index')->name('home');
+
+// Routes and Tasks
+
+Route::resource('project', 'ProjectController');
+Route::resource('task', 'TaskController');
+
+// Users
+
+Route::get('user/calendar', 'UserController@calendar');
+Route::get('user/report', 'UserController@report');
+Route::resource('user', 'UserController');
+
+// Auth
+
+Auth::routes();
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
